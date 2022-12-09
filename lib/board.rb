@@ -7,12 +7,25 @@ class Board
     @board = Array.new(7) { Array.new(6, 0) }
   end
 
+  def display_board
+    puts ' 0 1 2 3 4 5 6'
+    0.upto(5) do |row|
+      print '|'
+      0.upto(6) do |column|
+        print @board[column][row] == 0 ? ' ' : @board[column][row]
+        print '|'
+      end
+      puts
+    end
+  end
+
   def valid_move?(column)
     @board[column].any?(0)
   end
 
   def place_piece(column, player)
-    @board[column][@board[column].index(0)] = player
+    position = @board[column - 1].count(0) - 1
+    @board[column - 1][position] = player
   end
 
   def win?
@@ -58,6 +71,3 @@ class Board
   
   
 end
-
-test = Board.new
-puts test.inspect

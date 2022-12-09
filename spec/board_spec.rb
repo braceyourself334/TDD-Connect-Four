@@ -39,7 +39,7 @@ describe Board do
         board = Board.new
         board.place_piece(0, 1)
         board.place_piece(0, 1)
-        expect(board.board[0][1]).to eq(1)
+        expect(board.board[0][5]).to eq(1)
       end
     end
   end
